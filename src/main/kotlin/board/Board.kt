@@ -11,7 +11,8 @@ interface Board {
     //removes the piece from the board, letting the position empty
     fun removePiece(piece: Piece) : Board
 
-    //TODO: improve with the result class
     //Returns the piece in the position, if not found it returns null
-    fun getPieceInPosition(position: Vector) : Piece
+    fun getPieceInPosition(position: Vector) : Result<Piece>
+    //Returns true if the position exists and false if not
+    fun positionExists(position: Vector): Boolean
 }
