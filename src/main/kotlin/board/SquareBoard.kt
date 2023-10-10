@@ -2,6 +2,7 @@ package board
 
 import piece.Piece
 import vector.Vector
+import java.lang.Exception
 import java.util.NoSuchElementException
 
 class SquareBoard(val board: Map<Vector, Piece?>): Board {
@@ -38,10 +39,10 @@ class SquareBoard(val board: Map<Vector, Piece?>): Board {
             if (piece != null) {
                 Result.success(piece)
             } else {
-                throw NoSuchElementException("No piece found in position $position")
+                Result.failure(NoSuchElementException("No piece found in position $position"))
             }
         } else {
-            throw IllegalArgumentException("Key $position does not exist in the map")
+            Result.failure(IllegalArgumentException("Key $position does not exist in the map"))
         }
     }
 
